@@ -1,0 +1,27 @@
+.loadbar {
+  height: 100%;
+  min-height: 163px;
+  width: 100%;
+  background: #fafafa;
+  animation: flash 600ms ease-in infinite;
+  border-radius: .25rem;
+  margin-bottom: 1rem;
+}
+
+@keyframes flash {
+  0% {
+    background: linear-gradient(45deg, #fafafa -20%, white, #fafafa 20%);
+  }
+  30% {
+    background: linear-gradient(45deg, #fafafa 0%, white, #fafafa 40%);
+  }
+  50% {
+    background: linear-gradient(45deg, #fafafa 30%, white, #fafafa 70%);
+  }
+  80% {
+    background: linear-gradient(45deg, #fafafa 60%, white, #fafafa 100%);
+  }
+  100% {
+    background: linear-gradient(45deg, #fafafa 80%, white, #fafafa 110%);
+  }
+}

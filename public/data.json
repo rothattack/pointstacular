@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "month": "December",
+    "day": 23,
+    "amount": 188
+  },
+  {
+    "id": 2,
+    "month": "December",
+    "day": 24,
+    "amount": 225
+  },
+  {
+    "id": 3,
+    "month": "December",
+    "day": 25,
+    "amount": 99
+  },
+  {
+    "id": 4,
+    "month": "January",
+    "day": 3,
+    "amount": 51
+  },
+  {
+    "id": 19,
+    "month": "January",
+    "day": 1,
+    "amount": 50
+  },
+  {
+    "id": 6,
+    "month": "February",
+    "day": 7,
+    "amount": 99
+  },
+  {
+    "id": 7,
+    "month": "February",
+    "day": 13,
+    "amount": 530
+  }
+]

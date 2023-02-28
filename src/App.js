@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import TotalRewards from "./components/TotalBlock/TotalBlock";
+import fetchTransactions from "./services/fetchTransactions";
+import MonthBlock from "./components/MonthBlock/MonthBlock";
+import LoadBar from "./components/LoadBar/LoadBar";
+import getPointsPerTransaction from "./utility/getPointsPerTransaction";
+import getTransactionByMonthAndTotal from "./utility/getTransactionByMonthAndTotal";
 
 function App() {
+  const [monthBlocks, setMonthBlock] = useState([]);
+  const [totalPoints, setTotalPoints] = useState(0);
+
+  useEffect(() => {
+    // simulate latency with setTimeout
+    setTimeout(() => {
+      fetchTransactions()
+        .then(getPointsPerTransaction)
+        .then(getTransactionByMonthAndTotal)
+        .then(({ total, transactionByMonth }) => {
+          const blocks = Array.from(transactionByMonth).map(([month, transactions]) => (
+            <MonthBlock key={month} month={month} transactions={transactions} />
+          ));
+
+          setMonthBlock(blocks);
+          setTotalPoints(total);
+        });
+    }, 1000);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="vertical align center">
+      <TotalRewards total={totalPoints} />
+      <section className="container">
+        {monthBlocks}
+        <LoadBar show={!monthBlocks.length} />
+        <LoadBar show={!monthBlocks.length} />
+        <LoadBar show={!monthBlocks.length} />
+      </section>
     </div>
   );
 }
